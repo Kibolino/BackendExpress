@@ -6,10 +6,10 @@ const config = require("./config");
 const mysql = require('mysql');
 
 const credentials={
-  host: 'LocalHost',
-  user: 'root',
+  host: '',
+  user: '',
   password: '',
-  database: 'pato'
+  database: ''
 }
 
 const app = express();
