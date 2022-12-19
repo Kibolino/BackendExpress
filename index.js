@@ -110,6 +110,24 @@ app.post("/usuarios", (req, res) => {
   }
 });
 
+app.post("/usuarios", (req, res) =>{
+  const {email, senha} =req.body
+  const values = [email, senha]
+  var conection = mysql.createConnection(credentials)
+  conection.query("SELECT * FROM Usuarios WHERE email = ? AND senha = ?",values, (err, result)=>{
+    if(err){
+      res.status(500).send(err)
+    }else{
+      if(result.lenght > 0){
+        res.status(200).send(result[0])
+      }else{
+        res.status(400).send('Usuario não existe')
+      }
+    }
+  })
+  conection.end()
+}) 
+
 app.put("/usuarios/:id", (req, res) => {
   try {
     console.log("Chamou update", req.body);
