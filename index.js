@@ -121,8 +121,7 @@ app.post("/usuarios", (req, res) => {
 app.post("/usuarios", (req, res) =>{
   const {email, senha} =req.body
   const values = [email, senha]
-  var conection = mysql.createConnection(credentials)
-  conection.query("SELECT * FROM Usuarios WHERE email = ? AND senha = ?",values, (err, result)=>{
+  client.query("SELECT * FROM Usuarios WHERE email = ? AND senha = ?",values, (err, result)=>{
     if(err){
       res.status(500).send(err)
     }else{
@@ -133,7 +132,6 @@ app.post("/usuarios", (req, res) =>{
       }
     }
   })
-  conection.end()
 }) 
 
 app.put("/usuarios/:id", (req, res) => {
