@@ -3,6 +3,14 @@ const { Client } = require("pg");
 const cors = require("cors");
 const bodyparser = require("body-parser");
 const config = require("./config");
+const mysql = require('mysql');
+
+const credentials={
+  host: 'LocalHost',
+  user: 'root',
+  password: '',
+  database: 'pato'
+}
 
 const app = express();
 //midleware
